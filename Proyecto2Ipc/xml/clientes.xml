@@ -1,0 +1,16 @@
+<clientes>
+    <cliente>
+        <nit>123456789</nit>
+        <nombre>Juan Pérez</nombre>
+        <direccion>123 Calle Principal</direccion>
+        <telefono>555-1234</telefono>
+        <correo>juan@example.com</correo>
+    </cliente>
+    <cliente>
+        <nit>987654321</nit>
+        <nombre>Maria Rodríguez</nombre>
+        <direccion>456 Avenida Secundaria</direccion>
+        <telefono>555-5678</telefono>
+        <correo>maria@example.com</correo>
+    </cliente>
+</clientes>
