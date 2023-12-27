@@ -20,11 +20,9 @@ from Proyecto2Ipc import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index ,name="index"),
-    path('/singup/',views.singup,name="singup"),
     path('', views.index),
+    path('singup/',views.signup,name="singup"),
     path('producto/', views.producto),
     path('cliente/', views.cliente),
     path('facturas/', views.facturas),
-
 ]

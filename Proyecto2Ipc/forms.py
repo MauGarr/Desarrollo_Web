@@ -4,9 +4,9 @@ from .models import Cliente
 
 
 class ClienteForm(forms.ModelForm):
-    class Meta:
-        model = Cliente
-        fields = ('nit', 'nombre', 'direccion','telefono','correo')
+    # class Meta:
+    #     model = Cliente
+    #     fields = ('nit', 'nombre', 'direccion','telefono','correo')
 
     def carga_datos():
         try:
