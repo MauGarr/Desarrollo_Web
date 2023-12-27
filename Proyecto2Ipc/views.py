@@ -19,3 +19,5 @@ def facturas(request):
 
 def nav(request):
     return render(request,"nav.html")
+def getinproductos(request):
+    return render(request,"mercaingresa.html")

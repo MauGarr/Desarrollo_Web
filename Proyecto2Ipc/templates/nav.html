@@ -1,3 +1,66 @@
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+      var navLinks = document.querySelectorAll('.nav-link');
+
+      // Function to set a cookie
+      function setCookie(name, value, days) {
+          var expires = '';
+          if (days) {
+              var date = new Date();
+              date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+              expires = '; expires=' + date.toUTCString();
+          }
+          document.cookie = name + '=' + value + expires + '; path=/';
+      }
+
+      // Function to get a cookie value
+      function getCookie(name) {
+          var nameEQ = name + '=';
+          var cookies = document.cookie.split(';');
+          for (var i = 0; i < cookies.length; i++) {
+              var cookie = cookies[i];
+              while (cookie.charAt(0) === ' ') {
+                  cookie = cookie.substring(1, cookie.length);
+              }
+              if (cookie.indexOf(nameEQ) === 0) {
+                  return cookie.substring(nameEQ.length, cookie.length);
+              }
+          }
+          return null;
+      }
+
+      navLinks.forEach(function (link) {
+          link.addEventListener('click', function () {
+              // Remove 'active' class from all links
+              navLinks.forEach(function (navLink) {
+                  navLink.classList.remove('active');
+              });
+
+              // Add 'active' class to the clicked link
+              this.classList.add('active');
+
+              // Set a cookie to remember the active link
+              setCookie('activeLink', this.getAttribute('href'), 7); // Cookie expires in 7 days
+          });
+      });
+
+      // Check if there is a cookie for the active link
+      var activeLink = getCookie('activeLink');
+      if (activeLink) {
+          // Remove 'active' class from all links
+          navLinks.forEach(function (navLink) {
+              navLink.classList.remove('active');
+          });
+
+          // Add 'active' class to the link stored in the cookie
+          var activeNavLink = document.querySelector('.nav-link[href="' + activeLink + '"]');
+          if (activeNavLink) {
+              activeNavLink.classList.add('active');
+          }
+      }
+  });
+</script>
+
 
 
 <div class="container">

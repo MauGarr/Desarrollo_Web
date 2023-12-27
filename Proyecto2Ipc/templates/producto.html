@@ -20,6 +20,9 @@
 <body>
     {% include 'nav.html' %}
     <br>
+    <div style="display: flex; justify-content: center; margin-bottom: 1em;">
+        <a href="{% url 'getinproductos' %}" class="btn btn-primary btn-icon-split" aria-current="page">Ingresar Productos</a>
+    </div>
     <script>
         $(document).ready( function () {
             $('#tableProductos_id').DataTable();
