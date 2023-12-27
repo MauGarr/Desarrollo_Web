@@ -15,3 +15,6 @@ def cliente(request):
 
 def facturas(request):
     return render(request, 'facturas.html')
+
+def nav(request):
+    return render(request,"nav.html")
