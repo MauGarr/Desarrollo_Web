@@ -2,12 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clientes</title>
-
-    <!-- Incluir Bootstrap (a través de CDN) -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
     <style>
         body {
             background: #005AA7;  /* fallback for old browsers */
@@ -18,40 +19,91 @@
 </head>
 <body>
     {% include 'nav.html' %}
-<!-- Contenido Principal -->
-<div class="container mt-5">
-    <h1>Menu principal Cliente</h1>
-    <button class="btn btn-primary" data-toggle="modal" data-target="#editModal">Editar</button>
-</div>
-
-<!-- Ventana Modal de Edición -->
-<div class="modal" id="editModal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Editar Información</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <!-- Contenido del Formulario de Edición -->
-                <form>
-                    <div class="form-group">
-                        <label for="editInput">Campo a Editar</label>
-                        <input type="text" class="form-control" id="editInput" placeholder="Nuevo valor">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
-                </form>
-            </div>
-        </div>
+    <br>
+    <div style="display: flex; justify-content: center; margin-bottom: 1em;">
+        <a href="{% url 'singup' %}" class="btn btn-primary btn-icon-split" aria-current="page">Ingresar Clientes</a>
     </div>
-</div>
+    <script>
+        $(document).ready( function () {
+            $('#tableClientes_id').DataTable();
+        } );
+    </script>
+    <div class="container">
+        <div class="card border-primary mb-3">
+            <div class="card-header">
+              Clientes
+            </div>
+            <div class="card-body">
+                <table id="tableClientes_id" class="display table table-bordered" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>Apellido</th>
+                            <th>Nombre</th>
+                            <th>Direccion</th>
+                            <th>Nit</th>
+                            <th>Email</th>
+                            <th>Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Tiger Nixon</td>
+                            <td>System Architect</td>
+                            <td>Edinburgh</td>
+                            <td>61</td>
+                            <td>2011-04-25</td>
+                            <td style="flex-direction: row;">
+                            <form action="">
+                                <button class="btn btn-danger btn-icon-split btn-sm">Eliminar</button>
+                            </form>
+                            <form action="">
+                                <button class="btn btn-primary btn-icon-split btn-sm">Editar</button>
+                            </form>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Garrett Winters</td>
+                            <td>Accountant</td>
+                            <td>Tokyo</td>
+                            <td>63</td>
+                            <td>2011-07-25</td>
 
-<!-- Incluir Bootstrap JS y Popper.js (a través de CDN) -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
+                        </tr>
+                        <tr>
+                            <td>Ashton Cox</td>
+                            <td>Junior Technical Author</td>
+                            <td>San Francisco</td>
+                            <td>66</td>
+                            <td>2009-01-12</td>
+                        </tr>
+                        <tr>
+                            <td>Cedric Kelly</td>
+                            <td>Senior Javascript Developer</td>
+                            <td>Edinburgh</td>
+                            <td>22</td>
+                            <td>2012-03-29</td>
+                        </tr>
+                        <tr>
+                            <td>Airi Satou</td>
+                            <td>Accountant</td>
+                            <td>Tokyo</td>
+                            <td>33</td>
+                            <td>2008-11-28</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>Apellido</th>
+                            <th>Nombre</th>
+                            <th>Direccion</th>
+                            <th>Nit</th>
+                            <th>Email</th>
+                            <th>Opciones</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+          </div>
+    </div>
 </body>
 </html>

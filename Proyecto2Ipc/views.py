@@ -8,7 +8,8 @@ def index(request):
     return render(request, 'inicio.html')
 
 def signup(request):
-    return HttpResponse('Prueba')
+    # return HttpResponse('Prueba')
+    return render(request, 'singup.html')
 
 
 # Cliente Views
@@ -127,3 +128,5 @@ def guardar_facturas(request):
 
 def nav(request):
     return render(request,"nav.html")
+def getinproductos(request):
+    return render(request,"mercaingresa.html")
