@@ -5,7 +5,8 @@ def index(request):
     return render(request, 'inicio.html')
 
 def signup(request):
-    return HttpResponse('Prueba')
+    # return HttpResponse('Prueba')
+    return render(request, 'singup.html')
 
 def producto(request):
     return render(request, 'producto.html')
