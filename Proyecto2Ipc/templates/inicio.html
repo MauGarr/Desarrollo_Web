@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!-- Plantilla principal -->
 <!DOCTYPE html>
 <html lang="es">
@@ -11,5 +12,72 @@
     <!-- Contenido específico de la página -->
     <h1>Bienvenido a mi página</h1>
     <p>Este es el contenido de mi página.</p>
+=======
+<!-- crud_app/templates/index.html -->
+
+<!DOCTYPE html> 
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio</title>
+
+    <!-- Incluir Bootstrap (a través de CDN) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <style>
+        body {
+            background: #005AA7;  /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #FFFDE4, #005AA7);  /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #FFFDE4, #005AA7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <div class="container mt-5">
+        <div class="jumbotron text-center">
+            <h1 class="display-4">Bienvenido a la Aplicacion CRUD</h1>
+            <p class="lead">Gestiona tus productos, clientes y facturas de manera facil y eficiente.</p>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Productos</h5>
+                        <p class="card-text">Administra tu lista de productos.</p>
+                        <a href= 'producto/'class="btn btn-primary">Ir a Productos</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Clientes</h5>
+                        <p class="card-text">Gestiona la informacion de tus clientes.</p>
+                        <a href='cliente/' class="btn btn-primary">Ir a Clientes</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Facturacion</h5>
+                        <p class="card-text">Consulta y genera facturas.</p>
+                        <a href='facturas/' class="btn btn-primary">Ir a Facturacion</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Incluir Bootstrap JS y Popper.js (a través de CDN) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+>>>>>>> origin/main
 </body>
 </html>

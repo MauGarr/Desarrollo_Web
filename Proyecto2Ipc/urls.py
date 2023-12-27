@@ -18,10 +18,13 @@ from django.contrib import admin
 from django.urls import path
 from Proyecto2Ipc import views
 
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index ,name="index"),
-    path('/singup/',views.singup,name="singup")
-  
+    path('/singup/',views.singup,name="singup"),
+    path('', views.index),
+    path('producto/', views.producto),
+    path('cliente/', views.cliente),
+    path('facturas/', views.facturas),
+
 ]
