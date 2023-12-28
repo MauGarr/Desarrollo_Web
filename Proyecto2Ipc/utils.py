@@ -29,7 +29,7 @@ def cargar_clientes_desde_xml(archivo_xml):
 
     clientes = []
     for clientes_elem in root.findall("cliente"):
-        nit = int(clientes_elem.find("nit").text)
+        nit = clientes_elem.find("nit").text
         nombre = clientes_elem.find("nombre").text
         direccion = clientes_elem.find("direccion").text
         telefono = clientes_elem.find("telefono").text

@@ -1,12 +1,4 @@
-<clientes><cliente><nit>123456789</nit><nombre>
-			Juan P&#233;rez
-		</nombre><direccion>
-			123 Calle Principal
-		</direccion><telefono>
-			555-1234
-		</telefono><correo>
-			juan@example.com
-		</correo></cliente><cliente><nit>987654321</nit><nombre>
+<clientes><cliente><nit>987654321</nit><nombre>
 			Maria Rodr&#237;guez
 		</nombre><direccion>
 			456 Avenida Secundaria
@@ -14,36 +6,4 @@
 			555-5678
 		</telefono><correo>
 			maria@example.com
-		</correo></cliente><cliente><nit>123123123</nit><nombre>
-			Carlos Gonz&#225;lez
-		</nombre><direccion>
-			789 Calle Terciaria
-		</direccion><telefono>
-			555-9012
-		</telefono><correo>
-			maria@example.com
-		</correo></cliente><cliente><nit>123456789</nit><nombre>
-			Juan P&#233;rez
-		</nombre><direccion>
-			123 Calle Principal
-		</direccion><telefono>
-			555-1234
-		</telefono><correo>
-			juan@example.com
-		</correo></cliente><cliente><nit>123456789</nit><nombre>
-			Juan P&#233;rez
-		</nombre><direccion>
-			123 Calle Principal
-		</direccion><telefono>
-			555-1234
-		</telefono><correo>
-			juan@example.com
-		</correo></cliente><cliente><nit>123456789</nit><nombre>
-			Juan P&#233;rez
-		</nombre><direccion>
-			123 Calle Principal
-		</direccion><telefono>
-			555-1234
-		</telefono><correo>
-			juan@example.com
-		</correo></cliente></clientes>
+		</correo></cliente><cliente><nit>95069437</nit><nombre>Cliente 1</nombre><direccion>direccion</direccion><telefono>51359944</telefono><correo>oliver44681598@gmail.com</correo></cliente><cliente><nit>12344556</nit><nombre>Juan Diego</nombre><direccion>direccion 2</direccion><telefono>51359944</telefono><correo /></cliente></clientes>

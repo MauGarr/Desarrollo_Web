@@ -27,7 +27,8 @@ urlpatterns = [
     path('facturas/', views.facturas,name='facturas'),
     path('getinProductos/', views.getinproductos,name='getinproductos'),
     path('getinProductos/saveProductos/', views.guardar_productos),
-    path('singup/saveClientes/', views.guardar_clientes),
+    path('singup/saveClientes/', views.guardar_clientes, name='saveClientes'),
     path('producto/eliminar_producto/<str:nombre>/', views.eliminar_producto, name='eliminar_producto'),
+    path('cliente/eliminar_cliente/<str:nit>/', views.eliminar_cliente, name='eliminar_cliente'),
     
 ]

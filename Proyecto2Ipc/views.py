@@ -19,40 +19,40 @@ def cliente(request):
     return render(request, 'clientes.html', {'clientes': clientes, 'guardar_clientes': guardar_clientes})
 
 def guardar_clientes(request):
-    if request.method == 'POST':
-        form = ClienteForm(request.POST)
-        if form.is_valid():
-            print("Agregando el cliente")
-            # El formulario es válido, procesa los datos
-            nit = form.cleaned_data['nit']
-            nombre = form.cleaned_data['nombre']
-            direccion = form.cleaned_data['direccion']
-            telefono = form.cleaned_data['telefono']
-            correo = form.cleaned_data['correo']
+  clientes= cargar_clientes_desde_xml("xml/clientes.xml")
+  if request.method == 'POST':
+        nombre = request.POST.get('nombre')
+        direccion = request.POST.get('direccion')
+        nit= request.POST.get('nit')
+        correo= request.POST.get('correo')
+        telefono= request.POST.get('telefono')
+        cliente = Cliente(nombre=nombre, direccion=direccion, nit=nit, correo=correo, telefono=telefono)
+        clientes.append(cliente)
+        archivo_xml = "xml/clientes.xml"
+        # Guardar la lista actualizada en el archivo XML
+        guardar_clientes= guardar_clientes_en_xml(clientes, archivo_xml)
 
-            # Cargar clientes existentes
-            archivo_xml = "clientes.xml"
-            clientes = cargar_clientes_desde_xml(archivo_xml)
-
-            # Agregar el nuevo cliente
-            nuevo_cliente = Cliente(
-                nit=nit,
-                nombre=nombre,
-                direccion=direccion,
-                telefono=telefono,
-                correo=correo
-            )
-            clientes.append(nuevo_cliente)
-
-            # Guardar la lista actualizada en el archivo XML
-            guardar_clientes_en_xml(clientes, archivo_xml)
-
-            return redirect('cliente_list')
-    else:
+        clientes = cargar_clientes_desde_xml("xml/clientes.xml")
+        return render(request, 'clientes.html', {'clientes': clientes, 'guardar_clientes': guardar_clientes})
+  else:
         # Si la solicitud no es POST, muestra el formulario vacío
-        form = ClienteForm()
+        
+        form = ProductoForm()
 
-    return render(request, 'clientes/guardar_clientes.html', {'form': form})
+  clientes = cargar_clientes_desde_xml("xml/clientes.xml")
+  guardar_clientes=guardar_clientes_en_xml(clientes,"xml/clientes.xml") 
+  return render(request, 'clientes.html', {'clientes': clientes, 'guardar_clientes': guardar_clientes})
+
+def eliminar_cliente(request, nit):
+    clientes = cargar_clientes_desde_xml("xml/clientes.xml")
+    for cliente in clientes:
+        if cliente.nit == nit:
+            clientes.remove(cliente)
+            break
+    archivo_xml = "xml/clientes.xml"
+    # Guardar la lista actualizada en el archivo XML
+    guardar_clientes= guardar_clientes_en_xml(clientes, archivo_xml)
+    return render(request, 'clientes.html', {'clientes': clientes, 'guardar_clientes': guardar_clientes})
 
 
 #Producto Views
@@ -84,6 +84,7 @@ def guardar_productos(request):
   productos = cargar_productos_desde_xml("xml/productos.xml")
   guardar_productos=guardar_productos_en_xml(productos,"xml/productos.xml") 
   return render(request, 'producto.html', {'productos': productos, 'guardar_productos': guardar_productos})
+
 def eliminar_producto(request, nombre):
     productos = cargar_productos_desde_xml("xml/productos.xml")
     for producto in productos:

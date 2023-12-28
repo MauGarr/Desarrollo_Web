@@ -54,7 +54,9 @@
                             <td>{{ cliente.correo }}</td>
                             <td>{{ cliente.telefono }}</td>
                             <td style="flex-direction: row;">
-                            <form action="">
+                            <form method="POST" action="{% url 'eliminar_cliente' nit=cliente.nit %}">
+                                {% csrf_token %}
+                                {{ form.as_p }}
                                 <button class="btn btn-danger btn-icon-split btn-sm">Eliminar</button>
                             </form>
                             <form action="">

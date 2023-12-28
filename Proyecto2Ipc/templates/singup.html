@@ -38,36 +38,35 @@
                     <div class="col-lg-7">
                         <div class="p-5">
                             <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Create a Client!</h1>
+                                <h1 class="h4 text-gray-900 mb-4">Crear Cliente!</h1>
                             </div>
-                            <form class="user">
-                                <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user" id="fistname"
-                                            placeholder="First Name">
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <input type="text" class="form-control form-control-user" id="lastname"
-                                            placeholder="Last Name">
-                                    </div>
+                            <form method='POST' action='saveClientes/' class="user">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                        <input name="nombre" type="text" class="form-control form-control-user" id="nombre"
+                                            placeholder="Nombre Completo">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" id="direccion"
-                                        placeholder="Address">
+                                    <input name="direccion" type="text" class="form-control form-control-user" id="direccion"
+                                        placeholder="Direccion">
+                                </div>
+                                <div class="form-group">
+                                    <input name="telefono" type="number" class="form-control form-control-user" id="telefono"
+                                        placeholder="Telefono">
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user"
+                                        <input name="nit" type="number" class="form-control form-control-user"
                                             id="nit" placeholder="NIT">
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="email" class="form-control form-control-user"
-                                            id="email" placeholder="Email Addres">
+                                        <input name="correo" type="email" class="form-control form-control-user"
+                                            id="correo" placeholder="Correo Electronico">
                                     </div>
                                 </div>
-                                <a href="{% url 'cliente' %}" class="btn btn-primary btn-user btn-block">
-                                    Register Client
-                                </a>
+                                <button type="submit" class="btn btn-primary btn-user btn-block">
+                                    Registrar Cliente
+                                </button>
                             </form>
                             <hr>
                             <div class="text-center">
