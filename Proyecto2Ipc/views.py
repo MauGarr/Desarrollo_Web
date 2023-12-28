@@ -62,6 +62,8 @@ def producto(request):
     productos = cargar_productos_desde_xml("xml/productos.xml")
     guardar_productos=guardar_productos_en_xml(productos,"xml/productos.xml")
     return render(request, 'producto.html', {'productos': productos, 'guardar_productos': guardar_productos})
+def editarproducto(request):
+    return render(request, 'editarproducto.html')
 
 def guardar_productos(request):
   productos= cargar_productos_desde_xml("xml/productos.xml")

@@ -25,11 +25,11 @@ urlpatterns = [
     path('producto/ingresar', views.getinproductos,name='getinproductos'),
     path('producto/editar', views.editarproducto,name='editarproducto'),
     path('producto/saveProductos/', views.guardar_productos),
+    path('producto/eliminar_producto/<str:nombre>/', views.eliminar_producto, name='eliminar_producto'),
     path('cliente/', views.cliente,name='cliente'),
     path('clientes/ingresar',views.signup,name="singup"),
     path('cliente/editar', views.editarcliente,name='editarcliente'),
     path('clientes/saveClientes/', views.guardar_clientes),
     path('facturas/', views.facturas,name='facturas'),
-    path('producto/eliminar_producto/<str:nombre>/', views.eliminar_producto, name='eliminar_producto'),
     
 ]
