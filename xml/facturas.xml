@@ -1,17 +1,1 @@
-<facturas><factura><total>
-			38.48
-		</total><cliente><nit>
-				Cliente A
-			</nit></cliente><detalle><producto><nombre>
-					Producto A,Producto B
-				,</nombre></producto></detalle><maestro>
-			1
-		</maestro></factura><factura><total>
-			38.48
-		</total><cliente><nit>
-				Cliente B
-			</nit></cliente><detalle><producto><nombre>
-					Producto C,Producto D
-				,</nombre></producto></detalle><maestro>
-			2
-		</maestro></factura></facturas>
+<facturas><factura><total>122</total><cliente><nit>123434231</nit></cliente><detalle><producto><nombre>producto a, producto b</nombre></producto></detalle><maestro>12</maestro></factura><factura><total>123</total><cliente><nit>12312345</nit></cliente><detalle><producto><nombre>producto a, producto b, producto c</nombre></producto></detalle><maestro>11</maestro></factura></facturas>

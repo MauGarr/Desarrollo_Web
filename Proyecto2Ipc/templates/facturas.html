@@ -21,7 +21,7 @@
     {% include 'nav.html' %}
     <br>
     <div style="display: flex; justify-content: center; margin-bottom: 1em;">
-        <a href="{% url 'singup' %}" class="btn btn-primary btn-icon-split" aria-current="page">Ingresar Facturas</a>
+        <a href='ingresar/' class="btn btn-primary btn-icon-split" aria-current="page">Ingresar Facturas</a>
     </div>
     <script>
         $(document).ready( function () {
@@ -52,6 +52,8 @@
                             <td>{{ factura.total }}</td>
                             <td style="flex-direction: row;">
                             <form method="POST" action="{% url 'eliminar_factura' maestro=factura.maestro %}">
+                                {% csrf_token %}
+                                {{ form.as_p }}
                                 <button class="btn btn-danger btn-icon-split btn-sm">Eliminar</button>
                             </form>
                             <form action="">

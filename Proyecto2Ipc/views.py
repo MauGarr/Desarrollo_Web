@@ -107,11 +107,10 @@ def guardar_facturas(request):
   facturas= cargar_facturas_desde_xml("xml/facturas.xml")
   if request.method == 'POST':
         maestro = request.POST.get('maestro')
-        detalle = request.POST.get('detalle')
-        cliente= request.POST.get('cliente')
-        fecha= request.POST.get('fecha')
+        productos = request.POST.get('productos')
+        nit_cliente= request.POST.get('nit_cliente')
         total= request.POST.get('total')
-        factura = Factura(maestro=maestro, detalle=detalle, cliente=cliente, fecha=fecha, total=total)
+        factura = Factura(total=total, nit_cliente=nit_cliente, productos=productos, maestro=maestro)
         facturas.append(factura)
         archivo_xml = "xml/facturas.xml"
         # Guardar la lista actualizada en el archivo XML
@@ -146,3 +145,8 @@ def getinproductos(request):
     productos = cargar_productos_desde_xml("xml/productos.xml")
     guardar_productos=guardar_productos_en_xml(productos,"xml/productos.xml")
     return render(request,"mercaingresa.html",{'productos': productos, 'guardar_productos': guardar_productos})
+
+def getinfacturas(request):
+    facturas = cargar_facturas_desde_xml("xml/facturas.xml")
+    guardar_facturas=guardar_facturas_en_xml(facturas,"xml/facturas.xml")
+    return render(request,"agregarFactura.html",{'facturas': facturas, 'guardar_facturas': guardar_facturas})
