@@ -24,6 +24,8 @@
             /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
         }
     </style>
+   
+
 </head>
 
 <body class="bg-gradient-primary">
@@ -34,13 +36,12 @@
             <div class="card-body p-0">
                 <!-- Nested Row within Card Body -->
                 <div class="row">
-                    <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
-                    <div class="col-lg-7">
+                    <div class="col-lg-12">
                         <div class="p-5">
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Ingresar Productos</h1>
                             </div>
-                            <form method='POST' action='saveProductos/' class="user">
+                            <form method='POST' action='saveProductos/' class="user" id="registerProductForm">
                                 {% csrf_token %}
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
@@ -87,6 +88,24 @@
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const registerProductForm = document.getElementById('registerProductForm');
+    
+            registerProductForm.addEventListener('submit', function (event) {
+                event.preventDefault(); // Evitar el envío del formulario
+    
+                // Aquí puedes agregar lógica adicional antes de enviar el formulario
+    
+                // Muestra la alerta
+                alert('¡Se ha creado un producto!');
+    
+                // Envía el formulario manualmente
+                registerProductForm.submit();
+            });
+        });
+    </script>
 
 </body>
 

@@ -17,6 +17,8 @@ def cliente(request):
     clientes = cargar_clientes_desde_xml("xml/clientes.xml")
     guardar_clientes=guardar_clientes_en_xml(clientes,"xml/clientes.xml")
     return render(request, 'clientes.html', {'clientes': clientes, 'guardar_clientes': guardar_clientes})
+def editarcliente(request):
+    return render(request, 'editarclientes.html')
 
 def guardar_clientes(request):
   clientes= cargar_clientes_desde_xml("xml/clientes.xml")
@@ -60,6 +62,8 @@ def producto(request):
     productos = cargar_productos_desde_xml("xml/productos.xml")
     guardar_productos=guardar_productos_en_xml(productos,"xml/productos.xml")
     return render(request, 'producto.html', {'productos': productos, 'guardar_productos': guardar_productos})
+def editarproducto(request):
+    return render(request, 'editarproducto.html')
 
 def guardar_productos(request):
   productos= cargar_productos_desde_xml("xml/productos.xml")
@@ -95,7 +99,7 @@ def eliminar_producto(request, nombre):
     # Guardar la lista actualizada en el archivo XML
     guardar_productos= guardar_productos_en_xml(productos, archivo_xml)
     return render(request, 'producto.html', {'productos': productos, 'guardar_productos': guardar_productos})
-# Facturas Views
+
 def facturas(request):
     return render(request, 'facturas.html')
 def guardar_facturas(request):
