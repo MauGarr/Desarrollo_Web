@@ -21,12 +21,14 @@ from Proyecto2Ipc import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index,name="index"),
-    path('singup/',views.signup,name="singup"),
     path('producto/', views.producto,name='producto'),
+    path('producto/ingresar', views.getinproductos,name='getinproductos'),
+    path('producto/editar', views.editarproducto,name='editarproducto'),
+    path('producto/saveProductos/', views.guardar_productos),
     path('cliente/', views.cliente,name='cliente'),
+    path('clientes/ingresar',views.signup,name="singup"),
+    path('cliente/editar', views.editarcliente,name='editarcliente'),
+    path('clientes/saveClientes/', views.guardar_clientes),
     path('facturas/', views.facturas,name='facturas'),
-    path('getinProductos/', views.getinproductos,name='getinproductos'),
-    path('getinProductos/saveProductos/', views.guardar_productos),
-    path('singup/saveClientes/', views.guardar_clientes),
     
 ]
