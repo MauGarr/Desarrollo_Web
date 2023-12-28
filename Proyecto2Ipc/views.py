@@ -60,6 +60,7 @@ def producto(request):
     productos = cargar_productos_desde_xml("xml/productos.xml")
     guardar_productos=guardar_productos_en_xml(productos,"xml/productos.xml")
     return render(request, 'producto.html', {'productos': productos, 'guardar_productos': guardar_productos})
+
 def guardar_productos(request):
   productos= cargar_productos_desde_xml("xml/productos.xml")
   if request.method == 'POST':
@@ -83,6 +84,16 @@ def guardar_productos(request):
   productos = cargar_productos_desde_xml("xml/productos.xml")
   guardar_productos=guardar_productos_en_xml(productos,"xml/productos.xml") 
   return render(request, 'producto.html', {'productos': productos, 'guardar_productos': guardar_productos})
+def eliminar_producto(request, nombre):
+    productos = cargar_productos_desde_xml("xml/productos.xml")
+    for producto in productos:
+        if producto.nombre == nombre:
+            productos.remove(producto)
+            break
+    archivo_xml = "xml/productos.xml"
+    # Guardar la lista actualizada en el archivo XML
+    guardar_productos= guardar_productos_en_xml(productos, archivo_xml)
+    return render(request, 'producto.html', {'productos': productos, 'guardar_productos': guardar_productos})
 # Facturas Views
 def facturas(request):
     return render(request, 'facturas.html')

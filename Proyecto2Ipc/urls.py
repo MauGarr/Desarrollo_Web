@@ -28,5 +28,6 @@ urlpatterns = [
     path('getinProductos/', views.getinproductos,name='getinproductos'),
     path('getinProductos/saveProductos/', views.guardar_productos),
     path('singup/saveClientes/', views.guardar_clientes),
+    path('producto/eliminar_producto/<str:nombre>/', views.eliminar_producto, name='eliminar_producto'),
     
 ]

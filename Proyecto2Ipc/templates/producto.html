@@ -52,7 +52,9 @@
                             <td>{{ producto.precio }}</td>
                             <td>{{ producto.existencias }}</td>
                             <td style="flex-direction: row;">
-                                <form action="">
+                                <form method="POST" action="{% url 'eliminar_producto' nombre=producto.nombre %}">
+                                    {% csrf_token %}
+                                    {{ form.as_p }}
                                     <button class="btn btn-danger btn-icon-split btn-sm">Eliminar</button>
                                 </form>
                                 <form action="">
