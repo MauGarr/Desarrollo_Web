@@ -37,21 +37,22 @@
                 <table id="tableClientes_id" class="display table table-bordered" style="width:100%">
                     <thead>
                         <tr>
-                            <th>Apellido</th>
                             <th>Nombre</th>
                             <th>Direccion</th>
                             <th>Nit</th>
                             <th>Email</th>
+                            <th>Telefono</th>
                             <th>Opciones</th>
                         </tr>
                     </thead>
                     <tbody>
+                        {% for cliente in clientes %}
                         <tr>
-                            <td>Tiger Nixon</td>
-                            <td>System Architect</td>
-                            <td>Edinburgh</td>
-                            <td>61</td>
-                            <td>2011-04-25</td>
+                            <td>{{ cliente.nombre }}</td>
+                            <td>{{ cliente.direccion }}</td>
+                            <td>{{ cliente.nit }}</td>
+                            <td>{{ cliente.correo }}</td>
+                            <td>{{ cliente.telefono }}</td>
                             <td style="flex-direction: row;">
                             <form action="">
                                 <button class="btn btn-danger btn-icon-split btn-sm">Eliminar</button>
@@ -61,43 +62,15 @@
                             </form>
                             </td>
                         </tr>
-                        <tr>
-                            <td>Garrett Winters</td>
-                            <td>Accountant</td>
-                            <td>Tokyo</td>
-                            <td>63</td>
-                            <td>2011-07-25</td>
-
-                        </tr>
-                        <tr>
-                            <td>Ashton Cox</td>
-                            <td>Junior Technical Author</td>
-                            <td>San Francisco</td>
-                            <td>66</td>
-                            <td>2009-01-12</td>
-                        </tr>
-                        <tr>
-                            <td>Cedric Kelly</td>
-                            <td>Senior Javascript Developer</td>
-                            <td>Edinburgh</td>
-                            <td>22</td>
-                            <td>2012-03-29</td>
-                        </tr>
-                        <tr>
-                            <td>Airi Satou</td>
-                            <td>Accountant</td>
-                            <td>Tokyo</td>
-                            <td>33</td>
-                            <td>2008-11-28</td>
-                        </tr>
+                        {% endfor %}
                     </tbody>
                     <tfoot>
                         <tr>
-                            <th>Apellido</th>
                             <th>Nombre</th>
                             <th>Direccion</th>
                             <th>Nit</th>
                             <th>Email</th>
+                            <th>Telefono</th>
                             <th>Opciones</th>
                         </tr>
                     </tfoot>

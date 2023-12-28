@@ -14,7 +14,9 @@ def signup(request):
 
 # Cliente Views
 def cliente(request):
-    return render(request, 'clientes.html')
+    clientes = cargar_productos_desde_xml("xml/clientes.xml")
+    guardar_productos=guardar_productos_en_xml(clientes,"xml/clientes.xml")
+    return render(request, 'clientes.html', {'clientes': clientes, 'guardar_clientes': guardar_clientes})
 
 def guardar_clientes(request):
     if request.method == 'POST':
