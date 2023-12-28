@@ -26,4 +26,5 @@ urlpatterns = [
     path('cliente/', views.cliente,name='cliente'),
     path('facturas/', views.facturas,name='facturas'),
     path('getinProductos/', views.getinproductos,name='getinproductos'),
+    path('getinProductos/saveProductos/', views.guardar_productos),
 ]

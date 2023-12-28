@@ -9,7 +9,7 @@ def guardar_clientes_en_xml(clientes, archivo_xml):
     for cliente in clientes:
         cliente_elem = ET.SubElement(root, "cliente")
         nit_cliente = ET.SubElement(cliente_elem, "nit")
-        nit_cliente.text = cliente.nit
+        nit_cliente.text = str(cliente.nit)
         nombre_cliente = ET.SubElement(cliente_elem, "nombre")
         nombre_cliente.text = cliente.nombre
         direccion_cliente = ET.SubElement(cliente_elem, "direccion")
@@ -29,7 +29,7 @@ def cargar_clientes_desde_xml(archivo_xml):
 
     clientes = []
     for clientes_elem in root.findall("cliente"):
-        nit = clientes_elem.find("nit").text
+        nit = int(clientes_elem.find("nit").text)
         nombre = clientes_elem.find("nombre").text
         direccion = clientes_elem.find("direccion").text
         telefono = clientes_elem.find("telefono").text

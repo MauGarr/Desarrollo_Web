@@ -20,6 +20,7 @@ def guardar_clientes(request):
     if request.method == 'POST':
         form = ClienteForm(request.POST)
         if form.is_valid():
+            print("Agregando el cliente")
             # El formulario es válido, procesa los datos
             nit = form.cleaned_data['nit']
             nombre = form.cleaned_data['nombre']
@@ -54,12 +55,14 @@ def guardar_clientes(request):
 
 #Producto Views
 def producto(request):
-    
-    return render(request, 'producto.html')
+    productos = cargar_productos_desde_xml("xml/productos.xml")
+    guardar_productos=guardar_productos_en_xml(productos,"xml/productos.xml")
+    return render(request, 'producto.html', {'productos': productos, 'guardar_productos': guardar_productos})
 def guardar_productos(request):
     if request.method == 'POST':
         form = ProductoForm(request.POST)
         if form.is_valid():
+            print("Datos del formulario:", form.cleaned_data)
             # El formulario es válido, procesa los datos
             nombre = form.cleaned_data['nombre']
             descripcion = form.cleaned_data['descripcion']
@@ -67,7 +70,7 @@ def guardar_productos(request):
             existencias = form.cleaned_data['existencias']
 
             # Cargar productos existentes
-            archivo_xml = "productos.xml"
+            archivo_xml = "xml/productos.xml"
             productos = cargar_productos_desde_xml(archivo_xml)
 
             # Agregar el nuevo producto
@@ -82,12 +85,17 @@ def guardar_productos(request):
             # Guardar la lista actualizada en el archivo XML
             guardar_productos_en_xml(productos, archivo_xml)
 
-            return redirect('product_list')
+            productos = cargar_productos_desde_xml("xml/productos.xml")
+            guardar_productos=guardar_productos_en_xml(productos,"xml/productos.xml")
+            return render(request, 'producto.html', {'productos': productos, 'guardar_productos': guardar_productos})
     else:
         # Si la solicitud no es POST, muestra el formulario vacío
+        
         form = ProductoForm()
 
-    return render(request, 'productos/guardar_productos.html', {'form': form})
+    productos = cargar_productos_desde_xml("xml/productos.xml")
+    guardar_productos=guardar_productos_en_xml(productos,"xml/productos.xml")
+    return render(request, 'producto.html', {'productos': productos, 'guardar_productos': guardar_productos})
 # Facturas Views
 def facturas(request):
     return render(request, 'facturas.html')
@@ -128,5 +136,8 @@ def guardar_facturas(request):
 
 def nav(request):
     return render(request,"nav.html")
+
 def getinproductos(request):
-    return render(request,"mercaingresa.html")
+    productos = cargar_productos_desde_xml("xml/productos.xml")
+    guardar_productos=guardar_productos_en_xml(productos,"xml/productos.xml")
+    return render(request,"mercaingresa.html",{'productos': productos, 'guardar_productos': guardar_productos})

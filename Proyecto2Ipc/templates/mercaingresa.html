@@ -40,34 +40,36 @@
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Ingresar Productos</h1>
                             </div>
-                            <form class="user">
+                            <form method='POST' action='saveProductos/' class="user">
+                                {% csrf_token %}
+                                {{ form.as_p }}
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user" id="PNombre"
+                                        <input name="{{ form.nombre.name }}" type="text" class="form-control form-control-user" id="nombre"
                                             placeholder="Nombre">
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control form-control-user" id="PDescripcion"
+                                        <input name="{{ form.descripcion.name }}" type="text" class="form-control form-control-user" id="description"
                                             placeholder="Descripcion">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user"
-                                            id="PPrecio" placeholder="Precio">
+                                        <input name="{{ form.precio.name }}"type="number" class="form-control form-control-user"
+                                            id="precio" placeholder="Precio">
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="email" class="form-control form-control-user"
-                                            id="PStock" placeholder="Stock">
+                                        <input name="{{ form.existencia.name }}" type="number" class="form-control form-control-user"
+                                            id="existencia" placeholder="Stock">
                                     </div>
                                 </div>
-                                <a href="{% url 'producto' %}" class="btn btn-primary btn-user btn-block">
-                                    Register Client
-                                </a>
+                                <button method='POST' type="submit" class="btn btn-primary btn-user btn-block">
+                                    Registrar Producto
+                                </button>
                             </form>
                             <hr>
                             <div class="text-center">
-                                <a class="small" href="{% url 'cliente' %}">Back</a>
+                                <a class="small" href="{% url 'producto' %}">Back</a>
                             </div>
                         </div>
                     </div>
