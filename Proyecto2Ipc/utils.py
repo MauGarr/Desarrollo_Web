@@ -1,5 +1,6 @@
 import xml.etree.ElementTree as ET
 from .models import Cliente, Producto, Factura
+from datetime import datetime
 
 #Clientes
 #Utilidad para guardar datos en xml de los clientes
@@ -78,16 +79,17 @@ def guardar_facturas_en_xml(facturas, archivo_xml):
 
     for factura in facturas:
         factura_elem = ET.SubElement(root, "factura")
-        fecha_factura = ET.SubElement(factura_elem, "fecha")
-        fecha_factura.text = str(factura.fecha)
         total_factura = ET.SubElement(factura_elem, "total")
         total_factura.text = str(factura.total)
         cliente_factura = ET.SubElement(factura_elem, "cliente")
-        cliente_factura.text = str(factura.cliente_id)
+        nit_cliente = ET.SubElement(cliente_factura, "nit")
+        nit_cliente.text = str(factura.nit_cliente)
         detalle_factura = ET.SubElement(factura_elem, "detalle")
-        detalle_factura.text = str(factura.detalle_id)
+        Producto_detalle = ET.SubElement(detalle_factura, "producto")
+        nombre_producto = ET.SubElement(Producto_detalle, "nombre")
+        nombre_producto.text = str(factura.productos)            
         maestro_factura = ET.SubElement(factura_elem, "maestro")
-        maestro_factura.text = str(factura.maestro_id)
+        maestro_factura.text = str(factura.maestro)
 
     tree = ET.ElementTree(root)
     with open(archivo_xml, "wb") as xml_file:
@@ -99,11 +101,14 @@ def cargar_facturas_desde_xml(archivo_xml):
 
     facturas = []
     for factura_elem in root.findall("factura"):
-        fecha = factura_elem.find("fecha").text
-        total = float(factura_elem.find("total").text)
-        cliente = int(factura_elem.find("cliente").text)
-        detalle = int(factura_elem.find("detalle").text)
-        maestro = int(factura_elem.find("maestro").text)
-        facturas.append(Factura(fecha=fecha, total=total, cliente_id=cliente, detalle_id=detalle, maestro_id=maestro))
+        total = factura_elem.find("total").text
+        nit_cliente = factura_elem.find("cliente").find("nit").text
+        detalle = factura_elem.find("detalle")
+        productos=""
+        for producto in detalle.findall("producto"):
+            nombre = producto.find("nombre").text   
+            productos+=nombre
+        maestro = factura_elem.find("maestro").text
+        facturas.append(Factura(total=total, nit_cliente=nit_cliente, productos=productos, maestro=maestro))
 
     return facturas

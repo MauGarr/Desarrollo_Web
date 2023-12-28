@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Cliente(models.Model):
     nombre= models.CharField(max_length=255, blank=False, null=False)
     nit= models.CharField(max_length=11, blank=False, null=False, unique=True)
@@ -16,10 +17,9 @@ class Producto(models.Model):
     existencias= models.IntegerField()
     
 class Factura(models.Model):
-    maestro = models.ForeignKey(Producto, on_delete=models.CASCADE)
-    detalle = models.ForeignKey(Cliente, on_delete=models.CASCADE, related_name= 'detalles')
-    cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE, related_name='facturas')
-    fecha = models.DateField(("Fecha de la factura."))
+    maestro = models.CharField(max_length=11, blank=False, null=False, unique=True)
+    productos = models.TextField("Productos") 
+    nit_cliente = models.CharField(max_length=11, blank=False, null=False, unique=True)
     total = models.DecimalField(max_digits=5, decimal_places=2)
     
 

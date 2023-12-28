@@ -21,7 +21,7 @@
     {% include 'nav.html' %}
     <br>
     <div style="display: flex; justify-content: center; margin-bottom: 1em;">
-        <a href="{% url 'singup' %}" class="btn btn-primary btn-icon-split" aria-current="page">Ingresar Clientes</a>
+        <a href="{% url 'singup' %}" class="btn btn-primary btn-icon-split" aria-current="page">Ingresar Facturas</a>
     </div>
     <script>
         $(document).ready( function () {
@@ -37,24 +37,21 @@
                 <table id="tableFacturas_id" class="display table table-bordered" style="width:100%">
                     <thead>
                         <tr>
-                            <th>Nombre</th>
-                            <th>Direccion</th>
-                            <th>Nit</th>
-                            <th>Email</th>
-                            <th>Telefono</th>
-                            <th>Opciones</th>
+                            <th>Maestro</th>
+                            <th>Detalle</th>
+                            <th>Cliente</th>
+                            <th>Total</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {% for cliente in clientes %}
+                        {% for factura in facturas %}
                         <tr>
-                            <td>{{ cliente.nombre }}</td>
-                            <td>{{ cliente.direccion }}</td>
-                            <td>{{ cliente.nit }}</td>
-                            <td>{{ cliente.correo }}</td>
-                            <td>{{ cliente.telefono }}</td>
+                            <td>{{ factura.maestro }}</td>
+                            <td>{{ factura.productos }}</td>
+                            <td>{{ factura.nit_cliente }}</td>
+                            <td>{{ factura.total }}</td>
                             <td style="flex-direction: row;">
-                            <form action="">
+                            <form method="POST" action="{% url 'eliminar_factura' maestro=factura.maestro %}">
                                 <button class="btn btn-danger btn-icon-split btn-sm">Eliminar</button>
                             </form>
                             <form action="">
@@ -66,12 +63,10 @@
                     </tbody>
                     <tfoot>
                         <tr>
-                            <th>Nombre</th>
-                            <th>Direccion</th>
-                            <th>Nit</th>
-                            <th>Email</th>
-                            <th>Telefono</th>
-                            <th>Opciones</th>
+                            <th>Maestro</th>
+                            <th>Detalle</th>
+                            <th>Cliente</th>
+                            <th>Total</th>
                         </tr>
                     </tfoot>
                 </table>

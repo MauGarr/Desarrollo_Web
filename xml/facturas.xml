@@ -1,0 +1,17 @@
+<facturas><factura><total>
+			38.48
+		</total><cliente><nit>
+				Cliente A
+			</nit></cliente><detalle><producto><nombre>
+					Producto A,Producto B
+				,</nombre></producto></detalle><maestro>
+			1
+		</maestro></factura><factura><total>
+			38.48
+		</total><cliente><nit>
+				Cliente B
+			</nit></cliente><detalle><producto><nombre>
+					Producto C,Producto D
+				,</nombre></producto></detalle><maestro>
+			2
+		</maestro></factura></facturas>

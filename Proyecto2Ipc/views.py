@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from flask import redirect
 from .forms import ClienteForm, ProductoForm, FacturaForm
 from .utils import cargar_productos_desde_xml, guardar_productos_en_xml, cargar_clientes_desde_xml, guardar_clientes_en_xml, cargar_facturas_desde_xml, guardar_facturas_en_xml
 from .models import Cliente, Producto, Factura
@@ -101,41 +100,44 @@ def eliminar_producto(request, nombre):
     return render(request, 'producto.html', {'productos': productos, 'guardar_productos': guardar_productos})
 
 def facturas(request):
-    return render(request, 'facturas.html')
+  facturas = cargar_facturas_desde_xml("xml/facturas.xml")
+  guardar_facturas= guardar_facturas_en_xml(facturas, "xml/facturas.xml")
+  return render(request, 'facturas.html', {'facturas': facturas, 'guardar_facturas': guardar_facturas})
 def guardar_facturas(request):
-    if request.method == 'POST':
-        form = FacturaForm(request.POST)
-        if form.is_valid():
-            # El formulario es válido, procesa los datos
-            fecha = form.cleaned_data['fecha']
-            total = form.cleaned_data['total']
-            cliente = form.cleaned_data['cliente']
-            detalle = form.cleaned_data['detalle']
-            maestro = form.cleaned_data['maestro']
+  facturas= cargar_facturas_desde_xml("xml/facturas.xml")
+  if request.method == 'POST':
+        maestro = request.POST.get('maestro')
+        detalle = request.POST.get('detalle')
+        cliente= request.POST.get('cliente')
+        fecha= request.POST.get('fecha')
+        total= request.POST.get('total')
+        factura = Factura(maestro=maestro, detalle=detalle, cliente=cliente, fecha=fecha, total=total)
+        facturas.append(factura)
+        archivo_xml = "xml/facturas.xml"
+        # Guardar la lista actualizada en el archivo XML
+        guardar_facturas= guardar_facturas_en_xml(facturas, archivo_xml)
 
-            # Cargar clientes existentes
-            archivo_xml = "facturas.xml"
-            facturas = cargar_facturas_desde_xml(archivo_xml)
-
-            # Agregar el nueva factura
-            nueva_factura = Factura(
-                fecha=fecha,
-                total=total,
-                cliente=cliente,
-                detalle=detalle,
-                maestro=maestro
-            )
-            facturas.append(nueva_factura)
-
-            # Guardar la lista actualizada en el archivo XML
-            guardar_facturas_en_xml(facturas, archivo_xml)
-
-            return redirect('cliente_list')
-    else:
+        facturas = cargar_facturas_desde_xml("xml/facturas.xml")
+        return render(request, 'facturas.html', {'facturas': facturas, 'guardar_facturas': guardar_facturas})
+  else:
         # Si la solicitud no es POST, muestra el formulario vacío
-        form = FacturaForm()
+        
+        form = ProductoForm()
 
-    return render(request, 'clientes/guardar_clientes.html', {'form': form})
+  facturas = cargar_facturas_desde_xml("xml/facturas.xml")
+  guardar_facturas= guardar_facturas_en_xml(facturas, archivo_xml)
+  return render(request, 'facturas.html', {'facturas': facturas, 'guardar_facturas': guardar_facturas})
+def eliminar_factura(request, maestro):
+    facturas = cargar_facturas_desde_xml("xml/facturas.xml")
+    for factura in facturas:
+        if factura.maestro == maestro:
+            facturas.remove(factura)
+            break
+    archivo_xml = "xml/facturas.xml"
+    # Guardar la lista actualizada en el archivo XML
+    guardar_facturas= guardar_facturas_en_xml(facturas, archivo_xml)
+    return render(request, 'facturas.html', {'clientes': facturas, 'guardar_facturas': guardar_facturas})
+
 
 def nav(request):
     return render(request,"nav.html")
