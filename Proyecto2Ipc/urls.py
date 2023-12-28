@@ -30,5 +30,6 @@ urlpatterns = [
     path('cliente/editar', views.editarcliente,name='editarcliente'),
     path('clientes/saveClientes/', views.guardar_clientes),
     path('facturas/', views.facturas,name='facturas'),
+    path('producto/eliminar_producto/<str:nombre>/', views.eliminar_producto, name='eliminar_producto'),
     
 ]
