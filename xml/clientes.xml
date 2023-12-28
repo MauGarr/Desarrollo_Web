@@ -1,16 +1,49 @@
-<clientes>
-    <cliente>
-        <nit>123456789</nit>
-        <nombre>Juan Pérez</nombre>
-        <direccion>123 Calle Principal</direccion>
-        <telefono>555-1234</telefono>
-        <correo>juan@example.com</correo>
-    </cliente>
-    <cliente>
-        <nit>987654321</nit>
-        <nombre>Maria Rodríguez</nombre>
-        <direccion>456 Avenida Secundaria</direccion>
-        <telefono>555-5678</telefono>
-        <correo>maria@example.com</correo>
-    </cliente>
-</clientes>
+<clientes><cliente><nit>123456789</nit><nombre>
+			Juan P&#233;rez
+		</nombre><direccion>
+			123 Calle Principal
+		</direccion><telefono>
+			555-1234
+		</telefono><correo>
+			juan@example.com
+		</correo></cliente><cliente><nit>987654321</nit><nombre>
+			Maria Rodr&#237;guez
+		</nombre><direccion>
+			456 Avenida Secundaria
+		</direccion><telefono>
+			555-5678
+		</telefono><correo>
+			maria@example.com
+		</correo></cliente><cliente><nit>123123123</nit><nombre>
+			Carlos Gonz&#225;lez
+		</nombre><direccion>
+			789 Calle Terciaria
+		</direccion><telefono>
+			555-9012
+		</telefono><correo>
+			maria@example.com
+		</correo></cliente><cliente><nit>123456789</nit><nombre>
+			Juan P&#233;rez
+		</nombre><direccion>
+			123 Calle Principal
+		</direccion><telefono>
+			555-1234
+		</telefono><correo>
+			juan@example.com
+		</correo></cliente><cliente><nit>123456789</nit><nombre>
+			Juan P&#233;rez
+		</nombre><direccion>
+			123 Calle Principal
+		</direccion><telefono>
+			555-1234
+		</telefono><correo>
+			juan@example.com
+		</correo></cliente><cliente><nit>123456789</nit><nombre>
+			Juan P&#233;rez
+		</nombre><direccion>
+			123 Calle Principal
+		</direccion><telefono>
+			555-1234
+		</telefono><correo>
+			juan@example.com
+		</correo></cliente></clientes>

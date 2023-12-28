@@ -50,9 +50,9 @@ def guardar_productos_en_xml(productos, archivo_xml):
         descripcion_producto = ET.SubElement(producto_elem, "descripcion")
         descripcion_producto.text = producto.descripcion
         precio_producto = ET.SubElement(producto_elem, "precio")
-        precio_producto.text = str(producto.precio)
+        precio_producto.text = producto.precio
         existencias_producto = ET.SubElement(producto_elem, "existencias")
-        existencias_producto.text = str(producto.existencias)
+        existencias_producto.text = producto.existencias
 
     tree = ET.ElementTree(root)
     with open(archivo_xml, "wb") as xml_file:
@@ -66,8 +66,8 @@ def cargar_productos_desde_xml(archivo_xml):
     for producto_elem in root.findall("producto"):
         nombre = producto_elem.find("nombre").text
         descripcion = producto_elem.find("descripcion").text
-        precio = float(producto_elem.find("precio").text)
-        existencias = int(producto_elem.find("existencias").text)
+        precio = producto_elem.find("precio").text
+        existencias = producto_elem.find("existencias").text
         productos.append(Producto(nombre=nombre, descripcion=descripcion, precio=precio, existencias=existencias))
 
     return productos

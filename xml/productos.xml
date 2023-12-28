@@ -1,17 +1,58 @@
-<productos><producto><nombre>
+<productos>
+	<producto>
+		<nombre>
 			Producto1
-		</nombre><descripcion>
+		</nombre>
+		<descripcion>
 			Descripci&#243;n del Producto1
-		</descripcion><precio>19.99</precio><existencias>100</existencias></producto><producto><nombre>
+		</descripcion>
+		<precio>
+			19.99
+		</precio>
+		<existencias>
+			100
+		</existencias>
+	</producto>
+	<producto>
+		<nombre>
 			Producto2
-		</nombre><descripcion>
+		</nombre>
+		<descripcion>
 			Descripci&#243;n del Producto2
-		</descripcion><precio>29.99</precio><existencias>50</existencias></producto><producto><nombre>
+		</descripcion>
+		<precio>
+			29.99
+		</precio>
+		<existencias>
+			50
+		</existencias>
+	</producto>
+	<producto>
+		<nombre>
 			Producto3
-		</nombre><descripcion>
+		</nombre>
+		<descripcion>
 			Descripci&#243;n del Producto3
-		</descripcion><precio>39.99</precio><existencias>10</existencias></producto><producto><nombre>
+		</descripcion>
+		<precio>
+			39.99
+		</precio>
+		<existencias>
+			10
+		</existencias>
+	</producto>
+	<producto>
+		<nombre>
 			Producto4
-		</nombre><descripcion>
+		</nombre>
+		<descripcion>
 			Descripci&#243;n del Producto4
-		</descripcion><precio>49.99</precio><existencias>0</existencias></producto></productos>
+		</descripcion>
+		<precio>
+			49.99
+		</precio>
+		<existencias>
+			0
+		</existencias>
+	</producto>
+</productos>
