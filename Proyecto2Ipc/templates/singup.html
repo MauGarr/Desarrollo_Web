@@ -39,7 +39,7 @@
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Crear Cliente!</h1>
                             </div>
-                            <form method='POST' action='saveClientes/' class="user">
+                            <form method='POST' action='saveClientes/' class="user" id="registerClienteForm">
                                 {% csrf_token %}
                                 <div class="form-group">
                                         <input name="nombre" type="text" class="form-control form-control-user" id="nombre"
@@ -88,6 +88,23 @@
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const registerClienteForm = document.getElementById('registerClienteForm');
+    
+            registerClienteForm.addEventListener('submit', function (event) {
+                event.preventDefault(); // Evitar el envío del formulario
+    
+                // Aquí puedes agregar lógica adicional antes de enviar el formulario
+    
+                // Muestra la alerta
+                alert('¡Se ha creado un Cliente!');
+    
+                // Envía el formulario manualmente
+                registerClienteForm.submit();
+            });
+        });
+    </script>
 
 </body>
 
