@@ -165,7 +165,7 @@ def guardar_productos(request):
         guardar_productos= guardar_productos_en_xml(productos, archivo_xml)
 
         productos = cargar_productos_desde_xml("xml/productos.xml")
-        return render(request, 'producto.html', {'productos': productos, 'guardar_productos': guardar_productos})
+        return redirect('producto')
   else:
         # Si la solicitud no es POST, muestra el formulario vacío
         
@@ -204,7 +204,7 @@ def guardar_facturas(request):
         guardar_facturas= guardar_facturas_en_xml(facturas, archivo_xml)
 
         facturas = cargar_facturas_desde_xml("xml/facturas.xml")
-        return render(request, 'facturas.html', {'facturas': facturas, 'guardar_facturas': guardar_facturas})
+        return redirect('facturas')
   else:
         # Si la solicitud no es POST, muestra el formulario vacío
         
