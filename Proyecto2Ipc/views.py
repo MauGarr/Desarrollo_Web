@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from .forms import ClienteForm, ProductoForm, FacturaForm
 from .utils import cargar_productos_desde_xml, guardar_productos_en_xml, cargar_clientes_desde_xml, guardar_clientes_en_xml, cargar_facturas_desde_xml, guardar_facturas_en_xml
 from .models import Cliente, Producto, Factura
+from flask import redirect
 def index(request):
     return render(request, 'inicio.html')
 
@@ -61,8 +62,48 @@ def producto(request):
     productos = cargar_productos_desde_xml("xml/productos.xml")
     guardar_productos=guardar_productos_en_xml(productos,"xml/productos.xml")
     return render(request, 'producto.html', {'productos': productos, 'guardar_productos': guardar_productos})
-def editarproducto(request):
-    return render(request, 'editarproducto.html')
+
+def editarproducto(request, nombre):
+    productos = cargar_productos_desde_xml("xml/productos.xml")
+    producto_por_editar = None
+    for producto in productos:
+        if producto.nombre == nombre:
+            producto_por_editar = producto
+            productos.remove(producto)
+            break
+    archivo_xml = "xml/productos.xml"
+    nombre=producto_por_editar.nombre
+    descripcion=producto_por_editar.descripcion
+    precio=producto_por_editar.precio
+    existencias=producto_por_editar.existencias
+    # Guardar la lista actualizada en el archivo XML
+    guardar_productos_en_xml(productos, archivo_xml)
+    
+    
+    return render(request, 'editarproducto.html', {'nombre': nombre, 'descripcion': descripcion, 'precio': precio, 'existencias': existencias})
+
+def guardar_productos_actualizar(request, nombre):
+  productos= cargar_productos_desde_xml("xml/productos.xml")
+  if request.method == 'POST':
+        nombre = request.POST.get('nombre')
+        descripcion = request.POST.get('descripcion')
+        precio= request.POST.get('precio')
+        existencias= request.POST.get('existencia')
+        producto = Producto(nombre=nombre, descripcion=descripcion, precio=precio, existencias=existencias)
+        productos.append(producto)
+        archivo_xml = "xml/productos.xml"
+        # Guardar la lista actualizada en el archivo XML
+        guardar_productos= guardar_productos_en_xml(productos, archivo_xml)
+        productos = cargar_productos_desde_xml("xml/productos.xml")
+        return render(request, 'producto.html', {'productos': productos, 'guardar_productos': guardar_productos})
+  else:
+        # Si la solicitud no es POST, muestra el formulario vacío
+        
+        form = ProductoForm()
+
+  productos = cargar_productos_desde_xml("xml/productos.xml")
+  guardar_productos=guardar_productos_en_xml(productos,"xml/productos.xml") 
+  return render(request, 'producto.html', {'productos': productos, 'guardar_productos': guardar_productos})
 
 def guardar_productos(request):
   productos= cargar_productos_desde_xml("xml/productos.xml")

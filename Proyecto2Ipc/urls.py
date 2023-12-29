@@ -23,7 +23,7 @@ urlpatterns = [
     path('', views.index,name="index"),
     path('producto/', views.producto,name='producto'),
     path('producto/ingresar', views.getinproductos,name='getinproductos'),
-    path('producto/editar', views.editarproducto,name='editarproducto'),
+    path('producto/editar/<str:nombre>/', views.editarproducto,name='editarproducto'),
     path('producto/saveProductos/', views.guardar_productos),
     path('producto/eliminar_producto/<str:nombre>/', views.eliminar_producto, name='eliminar_producto'),
     path('cliente/', views.cliente,name='cliente'),
@@ -35,5 +35,7 @@ urlpatterns = [
     path('facturas/eliminar_factura/<str:maestro>/', views.eliminar_factura, name='eliminar_factura'),
     path('facturas/ingresar/saveFacturas/', views.guardar_facturas, name='guardar_facturas'),
     path('facturas/ingresar/', views.getinfacturas,name='getinfacturas'),
+    path('producto/editar/<str:nombre>/actualizarproducto', views.guardar_productos_actualizar,name='actualizarproducto'),
+    
     
 ]
