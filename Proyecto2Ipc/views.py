@@ -276,3 +276,30 @@ def getinfacturas(request):
     facturas = cargar_facturas_desde_xml("xml/facturas.xml")
     guardar_facturas=guardar_facturas_en_xml(facturas,"xml/facturas.xml")
     return render(request,"agregarFactura.html",{'facturas': facturas, 'guardar_facturas': guardar_facturas})
+
+def getReporte(request):
+    facturas = cargar_facturas_desde_xml("xml/facturas.xml")
+    productos = cargar_productos_desde_xml("xml/productos.xml")
+    productosEncontrados = []
+    for factura in facturas:
+        for producto in productos:
+            if factura.productos == producto.nombre:
+                # Suponiendo que producto.nombre y factura.total representan el nombre y la cantidad del producto actual
+                nuevo_producto = {'Nombre': producto.nombre, 'Cantidad': int(factura.total)}
+
+                # Verificar si el producto ya está en la lista
+                producto_existente = next((prod for prod in productosEncontrados if prod['Nombre'] == nuevo_producto['Nombre']), None)
+
+                # Si el producto no está en la lista, añadirlo
+                if producto_existente is None:
+                    productosEncontrados.append(nuevo_producto)
+                else:
+                    # Si el producto existe, sumar las cantidades
+                    producto_existente['Cantidad'] += nuevo_producto['Cantidad']
+
+
+
+
+                
+    print(productosEncontrados)
+    return render(request,"reportes.html", {'facturas': productosEncontrados})

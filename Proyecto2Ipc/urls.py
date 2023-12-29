@@ -39,6 +39,7 @@ urlpatterns = [
     path('facturas/editar/<str:maestro>/', views.editarfactura,name='editarfactura'),
     path('facturas/editar/<str:maestro>/actualizarfactura', views.guardar_facturas_actualizar,name='actualizarfactura'),
     path('producto/editar/<str:nombre>/actualizarproducto', views.guardar_productos_actualizar,name='actualizarproducto'),
+    path('reportes/view', views.getReporte, name='reporte')
     
     
 ]
