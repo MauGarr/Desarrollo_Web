@@ -21,7 +21,7 @@
     {% include 'nav.html' %}
     <br>
     <div style="display: flex; justify-content: center; margin-bottom: 1em;">
-        <a href='ingresar/' class="btn btn-primary btn-icon-split" aria-current="page">Ingresar Facturas</a>
+        <a href="{% url 'getinfacturas' %}" class="btn btn-primary btn-icon-split" aria-current="page">Ingresar Facturas</a>
     </div>
     <script>
         $(document).ready( function () {
@@ -57,7 +57,7 @@
                                 {{ form.as_p }}
                                 <button class="btn btn-danger btn-icon-split btn-sm">Eliminar</button>
                             </form>
-                            <form action="">
+                            <form action="{% url 'editarfactura'  maestro=factura.maestro %}">
                                 <button class="btn btn-primary btn-icon-split btn-sm">Editar</button>
                             </form>
                             </td>

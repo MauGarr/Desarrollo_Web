@@ -1,9 +1,1 @@
-<productos><producto><nombre>
-			Producto
-		</nombre><descripcion>
-			producto
-		</descripcion><precio>
-			15
-		</precio><existencias>
-			15
-		</existencias></producto></productos>
+<productos><producto><nombre>Producto</nombre><descripcion>producto4</descripcion><precio>1212</precio><existencias>3212</existencias></producto><producto><nombre>Producto</nombre><descripcion>producto</descripcion><precio>12</precio><existencias>12</existencias></producto><producto><nombre>Producto 3</nombre><descripcion>producto12</descripcion><precio>243</precio><existencias>453</existencias></producto></productos>

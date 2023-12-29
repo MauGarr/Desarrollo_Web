@@ -220,9 +220,48 @@ def eliminar_factura(request, maestro):
     archivo_xml = "xml/facturas.xml"
     # Guardar la lista actualizada en el archivo XML
     guardar_facturas= guardar_facturas_en_xml(facturas, archivo_xml)
-    return render(request, 'facturas.html', {'clientes': facturas, 'guardar_facturas': guardar_facturas})
+    return render(request, 'facturas.html', {'facturas': facturas, 'guardar_facturas': guardar_facturas})
 
+def editarfactura(request, maestro):
+    facturas = cargar_facturas_desde_xml("xml/facturas.xml")
+    factura_por_editar = None
+    for factura in facturas:
+        if factura.maestro == maestro:
+            factura_por_editar = factura
+            facturas.remove(factura)
+            break
+    archivo_xml = "xml/facturas.xml"
+    maestro=factura_por_editar.maestro
+    productos=factura_por_editar.productos
+    nit_cliente=factura_por_editar.nit_cliente
+    total=factura_por_editar.total
+    # Guardar la lista actualizada en el archivo XML
+    guardar_facturas_en_xml(facturas, archivo_xml)
+      
+    return render(request, 'editarFactura.html', {'maestro': maestro, 'productos': productos, 'nit_cliente': nit_cliente, 'total': total})
 
+def guardar_facturas_actualizar(request, maestro):
+  facturas= cargar_facturas_desde_xml("xml/facturas.xml")
+  if request.method == 'POST':
+        maestro = request.POST.get('maestro')
+        productos = request.POST.get('productos')
+        nit_cliente= request.POST.get('nit_cliente')
+        total= request.POST.get('total')
+        factura = Factura(total=total, nit_cliente=nit_cliente, productos=productos, maestro=maestro)
+        facturas.append(factura)
+        archivo_xml = "xml/facturas.xml"
+        # Guardar la lista actualizada en el archivo XML
+        guardar_facturas= guardar_facturas_en_xml(facturas, archivo_xml)
+        facturas = cargar_facturas_desde_xml("xml/facturas.xml")
+        return render(request, 'facturas.html', {'facturas': facturas, 'guardar_facturas': guardar_facturas})
+  else:
+        # Si la solicitud no es POST, muestra el formulario vacío
+        
+        form = ProductoForm()
+
+  facturas = cargar_facturas_desde_xml("xml/facturas.xml")
+  guardar_facturas=guardar_facturas_en_xml(facturas,"xml/facturas.xml") 
+  return render(request, 'facturas.html', {'facturas': facturas, 'guardar_facturas': guardar_facturas})
 def nav(request):
     return render(request,"nav.html")
 

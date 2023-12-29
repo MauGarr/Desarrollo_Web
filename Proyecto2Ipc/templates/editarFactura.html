@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
 
@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Registrar Factura</title>
+    <title>Editar Factura</title>
 
     <!-- Custom fonts for this template-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -24,6 +24,14 @@
             /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
         }
     </style>
+    <script>
+        document.getElementById('editFacturaForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Evita que el formulario se envíe
+    
+            // Muestra la alerta
+            alert('Se ha Editado una Factura');
+        });
+    </script>
 </head>
 
 <body class="bg-gradient-primary">
@@ -37,30 +45,33 @@
                     <div class="col-lg-12">
                         <div class="p-5">
                             <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Ingresar Factura!</h1>
+                                <h1 class="h4 text-gray-900 mb-4">Editar  Factura!</h1>
                             </div>
-                            <form method='POST' action='saveFacturas/' class="user" id="registerFacturaForm">
+                            <form method='POST' action='actualizarfactura' class="user" id="editFacturaForm">
                                 {% csrf_token %}
-                                <div class="form-group">
+                                {{ form.as_p }}
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input name="maestro" type="text" class="form-control form-control-user" id="maestro"
-                                            placeholder="Maestro(Id)">
+                                            placeholder="{{maestro}}" value="{{maestro}}">
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <input name="productos" type="text" class="form-control form-control-user" id="productos"
-                                        placeholder="Productos(Producto a, producto b,)">
+                                        placeholder="{{productos}}" value="{{productos}}">
                                 </div>
                                 <div class="form-group">
                                     <input name="nit_cliente" type="number" class="form-control form-control-user" id="nit_cliente"
-                                        placeholder="Nit del Cliente">
+                                        placeholder="{{nit_cliente}}" value="{{nit_cliente}}">
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input name="total" type="number" class="form-control form-control-user"
-                                            id="total" placeholder="Total">
+                                        <input name="total" type="text" class="form-control form-control-user"    
+                                            id="total" placeholder="{{total}}" value="{{total}}">
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary btn-user btn-block">
-                                    Registrar Factura
+                                    Actualizar Factura
                                 </button>
                             </form>
                             <hr>
@@ -84,23 +95,6 @@
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const registerFacturaForm = document.getElementById('registerFacturaForm');
-    
-            registerFacturaForm.addEventListener('submit', function (event) {
-                event.preventDefault(); // Evitar el envío del formulario
-    
-                // Aquí puedes agregar lógica adicional antes de enviar el formulario
-    
-                // Muestra la alerta
-                alert('¡Se ha creado una Factura!');
-    
-                // Envía el formulario manualmente
-                registerFacturaForm.submit();
-            });
-        });
-    </script>
 
 </body>
 
