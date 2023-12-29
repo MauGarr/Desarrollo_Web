@@ -1,9 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .forms import ClienteForm, ProductoForm, FacturaForm
 from .utils import cargar_productos_desde_xml, guardar_productos_en_xml, cargar_clientes_desde_xml, guardar_clientes_en_xml, cargar_facturas_desde_xml, guardar_facturas_en_xml
 from .models import Cliente, Producto, Factura
-from flask import redirect
 def index(request):
     return render(request, 'inicio.html')
 
@@ -65,29 +64,32 @@ def guardar_clientes_actualizar(request,nit):
   return render(request, 'clientes.html', {'clientes': clientes, 'guardar_clientes': guardar_clientes})
 
 def guardar_clientes(request):
-  clientes= cargar_clientes_desde_xml("xml/clientes.xml")
-  if request.method == 'POST':
+    clientes = cargar_clientes_desde_xml("xml/clientes.xml")
+
+    if request.method == 'POST':
         nombre = request.POST.get('nombre')
         direccion = request.POST.get('direccion')
-        nit= request.POST.get('nit')
-        correo= request.POST.get('correo')
-        telefono= request.POST.get('telefono')
+        nit = request.POST.get('nit')
+        correo = request.POST.get('correo')
+        telefono = request.POST.get('telefono')
         cliente = Cliente(nombre=nombre, direccion=direccion, nit=nit, correo=correo, telefono=telefono)
         clientes.append(cliente)
+
         archivo_xml = "xml/clientes.xml"
         # Guardar la lista actualizada en el archivo XML
-        guardar_clientes= guardar_clientes_en_xml(clientes, archivo_xml)
+        guardar_clientes = guardar_clientes_en_xml(clientes, archivo_xml)
 
-        clientes = cargar_clientes_desde_xml("xml/clientes.xml")
-        return render(request, 'clientes.html', {'clientes': clientes, 'guardar_clientes': guardar_clientes})
-  else:
+        # Redirect to the 'clientes' URL after processing the form
+        return redirect('cliente')
+
+    else:
         # Si la solicitud no es POST, muestra el formulario vacío
-        
         form = ProductoForm()
 
-  clientes = cargar_clientes_desde_xml("xml/clientes.xml")
-  guardar_clientes=guardar_clientes_en_xml(clientes,"xml/clientes.xml") 
-  return render(request, 'clientes.html', {'clientes': clientes, 'guardar_clientes': guardar_clientes})
+    clientes = cargar_clientes_desde_xml("xml/clientes.xml")
+    guardar_clientes = guardar_clientes_en_xml(clientes, "xml/clientes.xml")
+
+    return render(request, 'clientes.html', {'clientes': clientes, 'guardar_clientes': guardar_clientes})
 
 def eliminar_cliente(request, nit):
     clientes = cargar_clientes_desde_xml("xml/clientes.xml")
