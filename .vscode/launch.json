@@ -19,7 +19,7 @@
             "stopOnEntry": false,
             "cwd": "${workspaceFolder}",
             "env": {}
-            //"pythonPath": "${config:python.pythonPath}",
+            //"python": "${command:python.interpreterPath}",
             //"debugOptions": [
                // "RedirectOutput"
             //]
