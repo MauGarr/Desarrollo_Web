@@ -1,9 +1,1 @@
-<clientes><cliente><nit>987654321</nit><nombre>
-			Maria Rodr&#237;guez
-		</nombre><direccion>
-			456 Avenida Secundaria
-		</direccion><telefono>
-			555-5678
-		</telefono><correo>
-			maria@example.com
-		</correo></cliente><cliente><nit>12344556</nit><nombre>Juan Diego</nombre><direccion>direccion 2</direccion><telefono>51359944</telefono><correo /></cliente></clientes>
+<clientes />

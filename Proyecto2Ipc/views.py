@@ -17,8 +17,52 @@ def cliente(request):
     clientes = cargar_clientes_desde_xml("xml/clientes.xml")
     guardar_clientes=guardar_clientes_en_xml(clientes,"xml/clientes.xml")
     return render(request, 'clientes.html', {'clientes': clientes, 'guardar_clientes': guardar_clientes})
-def editarcliente(request):
-    return render(request, 'editarclientes.html')
+
+def editarcliente(request, nit):
+    clientes = cargar_clientes_desde_xml("xml/clientes.xml")
+    cliente_por_editar = None
+    for cliente in clientes:
+        if cliente.nit == nit:
+            cliente_por_editar = cliente
+            clientes.remove(cliente)
+            break
+    archivo_xml = "xml/clientes.xml"
+    nombre=cliente_por_editar.nombre
+    direccion=cliente_por_editar.direccion
+    nit=cliente_por_editar.nit
+    correo=cliente_por_editar.correo
+    telefono=cliente_por_editar.telefono
+    
+    # Guardar la lista actualizada en el archivo XML
+    guardar_clientes_en_xml(clientes, archivo_xml)
+    
+    
+    return render(request, 'editarclientes.html', {'nombre': nombre, 'direccion': direccion, 'nit': nit, 'correo': correo, 'telefono': telefono})
+
+def guardar_clientes_actualizar(request,nit):
+  clientes= cargar_clientes_desde_xml("xml/clientes.xml")
+  if request.method == 'POST':
+        nombre = request.POST.get('nombre')
+        direccion = request.POST.get('direccion')
+        nit= request.POST.get('nit')
+        correo= request.POST.get('correo')
+        telefono= request.POST.get('telefono')
+        cliente = Cliente(nombre=nombre, direccion=direccion, nit=nit, correo=correo, telefono=telefono)
+        clientes.append(cliente)
+        archivo_xml = "xml/clientes.xml"
+        # Guardar la lista actualizada en el archivo XML
+        guardar_clientes= guardar_clientes_en_xml(clientes, archivo_xml)
+
+        clientes = cargar_clientes_desde_xml("xml/clientes.xml")
+        return render(request, 'clientes.html', {'clientes': clientes, 'guardar_clientes': guardar_clientes})
+  else:
+        # Si la solicitud no es POST, muestra el formulario vacío
+        
+        form = ProductoForm()
+
+  clientes = cargar_clientes_desde_xml("xml/clientes.xml")
+  guardar_clientes=guardar_clientes_en_xml(clientes,"xml/clientes.xml") 
+  return render(request, 'clientes.html', {'clientes': clientes, 'guardar_clientes': guardar_clientes})
 
 def guardar_clientes(request):
   clientes= cargar_clientes_desde_xml("xml/clientes.xml")

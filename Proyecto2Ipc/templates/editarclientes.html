@@ -47,34 +47,36 @@
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Editar  Cliente!</h1>
                             </div>
-                            <form class="user" id="editClientForm">
+                            <form method='POST' action='actualizarcliente' class="user" id="editClientForm">
+                                {% csrf_token %}
+                                {{ form.as_p }}
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user" id="fistname"
-                                            placeholder="First Name">
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <input type="text" class="form-control form-control-user" id="lastname"
-                                            placeholder="Last Name">
+                                        <input name="nombre" type="text" class="form-control form-control-user" id="nombre"
+                                            placeholder="{{nombre}}" value="{{nombre}}">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" id="direccion"
-                                        placeholder="Address">
+                                    <input name="direccion" type="text" class="form-control form-control-user" id="direccion"
+                                        placeholder="{{direccion}}">
+                                </div>
+                                <div class="form-group">
+                                    <input name="telefono" type="number" class="form-control form-control-user" id="telefono"
+                                        placeholder="{{telefono}}">
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user"
-                                            id="nit" placeholder="NIT">
+                                        <input name="nit" type="text" class="form-control form-control-user"
+                                            id="nit" placeholder="{{nit}}">
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="email" class="form-control form-control-user"
-                                            id="email" placeholder="Email Addres">
+                                        <input name="correo" type="email" class="form-control form-control-user"
+                                            id="correo" placeholder="{{correo}}">
                                     </div>
                                 </div>
-                                <a href="{% url 'cliente' %}" class="btn btn-primary btn-user btn-block">
-                                    Register Client
-                                </a>
+                                <button type="submit" class="btn btn-primary btn-user btn-block">
+                                    Actualizar Cliente
+                                </button>
                             </form>
                             <hr>
                             <div class="text-center">

@@ -1,16 +1,9 @@
-<productos>
-	<producto>
-		<nombre>
+<productos><producto><nombre>
 			Producto
-		</nombre>
-		<descripcion>
+		</nombre><descripcion>
 			producto
-		</descripcion>
-		<precio>
+		</descripcion><precio>
 			15
-		</precio>
-		<existencias>
+		</precio><existencias>
 			15
-		</existencias>
-	</producto>
-</productos>
+		</existencias></producto></productos>
